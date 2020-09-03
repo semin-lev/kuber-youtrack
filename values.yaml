@@ -9,11 +9,11 @@ image:
   tag: 2019.1.51078
   pullPolicy: IfNotPresent
 
-nameOverride: ""
-fullnameOverride: ""
+nameOverride: "youtracktest"
+fullnameOverride: "youtracktest"
 
 service:
-  type: ClusterIP
+  type: LoadBalancer
   port: 8080
 
 ingress:
