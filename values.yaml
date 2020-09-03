@@ -6,7 +6,7 @@ replicaCount: 1
 
 image:
   repository: jetbrains/youtrack
-  tag: 2019.1.51078
+  tag: 2020.2.10643
   pullPolicy: IfNotPresent
 
 nameOverride: "youtracktest"
