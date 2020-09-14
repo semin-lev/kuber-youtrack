@@ -35,13 +35,13 @@ spec:
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           volumeMounts:
-            - name: data
+            - name: "{{ include "..fullname" . }}-data"
               mountPath: /opt/youtrack/data
-            - name: conf
+            - name: "{{ include "..fullname" . }}-conf"
               mountPath: /opt/youtrack/conf
-            - name: logs
+            - name: "{{ include "..fullname" . }}-logs"
               mountPath: /opt/youtrack/logs
-            - name: backups
+            - name: "{{ include "..fullname" . }}-backups"
               mountPath: /opt/youtrack/backups
       {{- with .Values.nodeSelector }}
       nodeSelector:
@@ -57,28 +57,28 @@ spec:
     {{- end }}
   volumeClaimTemplates:
     - metadata:
-        name: data
+        name: "{{ include "..fullname" . }}-data"
       spec:
         accessModes: [ "ReadWriteOnce" ]
         resources:
           requests:
             storage: 10Gi
     - metadata:
-        name: conf
+        name: "{{ include "..fullname" . }}-conf"
       spec:
         accessModes: [ "ReadWriteOnce" ]
         resources:
           requests:
             storage: 1Gi
     - metadata:
-        name: logs
+        name: "{{ include "..fullname" . }}-logs"
       spec:
         accessModes: [ "ReadWriteOnce" ]
         resources:
           requests:
             storage: 2Gi
     - metadata:
-        name: backups
+        name: "{{ include "..fullname" . }}-backups"
       spec:
         accessModes: [ "ReadWriteOnce" ]
         resources:
